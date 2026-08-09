@@ -1,0 +1,356 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------------------------------------------------------------
+   Design tokens — blue / white / teal
+----------------------------------------------------------------*/
+:root {
+  --radius: 0.875rem;
+
+  --background: oklch(0.995 0.002 250);
+  --foreground: oklch(0.19 0.03 255);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.03 255);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.03 255);
+
+  /* blue */
+  --primary: oklch(0.54 0.2 259);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* teal */
+  --accent: oklch(0.68 0.13 188);
+  --accent-foreground: oklch(0.19 0.03 255);
+
+  --secondary: oklch(0.965 0.008 250);
+  --secondary-foreground: oklch(0.28 0.03 255);
+
+  --muted: oklch(0.965 0.008 250);
+  --muted-foreground: oklch(0.5 0.02 256);
+
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.915 0.012 252);
+  --input: oklch(0.915 0.012 252);
+  --ring: oklch(0.54 0.2 259);
+
+  --grid-line: oklch(0.54 0.2 259 / 0.075);
+  --glow-a: oklch(0.54 0.2 259 / 0.13);
+  --glow-b: oklch(0.68 0.13 188 / 0.13);
+
+  /* surfaces — solid on purpose: backdrop-filter is the #1 scroll-jank source */
+  --surface: oklch(1 0 0 / 0.72);
+  --surface-strong: oklch(1 0 0 / 0.9);
+}
+
+.dark {
+  --background: oklch(0.155 0.022 260);
+  --foreground: oklch(0.96 0.01 250);
+
+  --card: oklch(0.196 0.024 260);
+  --card-foreground: oklch(0.96 0.01 250);
+
+  --popover: oklch(0.196 0.024 260);
+  --popover-foreground: oklch(0.96 0.01 250);
+
+  --primary: oklch(0.71 0.15 254);
+  --primary-foreground: oklch(0.155 0.022 260);
+
+  --accent: oklch(0.77 0.12 188);
+  --accent-foreground: oklch(0.155 0.022 260);
+
+  --secondary: oklch(0.25 0.024 260);
+  --secondary-foreground: oklch(0.96 0.01 250);
+
+  --muted: oklch(0.25 0.024 260);
+  --muted-foreground: oklch(0.7 0.02 256);
+
+  --destructive: oklch(0.65 0.19 25);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.13);
+  --ring: oklch(0.71 0.15 254);
+
+  --grid-line: oklch(0.75 0.13 225 / 0.085);
+  --glow-a: oklch(0.54 0.2 259 / 0.28);
+  --glow-b: oklch(0.68 0.13 188 / 0.2);
+
+  --surface: oklch(0.22 0.024 260 / 0.72);
+  --surface-strong: oklch(0.22 0.024 260 / 0.92);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--primary) 40%, transparent);
+    border-radius: 999px;
+    border: 3px solid var(--background);
+  }
+}
+
+@layer utilities {
+  /* Static by default — an always-running background-position animation on
+     every gradient headline repaints the whole line, every frame. */
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--primary),
+      var(--accent) 60%,
+      var(--primary)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* opt-in shimmer, used once (hero) */
+  .text-shimmer {
+    background-size: 220% auto;
+    animation: shimmer 7s linear infinite;
+  }
+
+  /* Card surface without backdrop-filter. */
+  .surface {
+    background-color: var(--surface);
+  }
+  .surface-strong {
+    background-color: var(--surface-strong);
+  }
+
+  /* No backdrop-filter anywhere: a full-width blur over a moving page is
+     re-rasterised every single scroll frame. A near-opaque fill over our
+     soft background is visually equivalent and free. */
+  .glass {
+    background: color-mix(in oklab, var(--background) 92%, transparent);
+  }
+
+  .hairline {
+    border: 1px solid color-mix(in oklab, var(--border) 92%, transparent);
+  }
+
+  .gpu {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* animated gradient hairline that traces a card edge on hover */
+  .edge-glow {
+    position: relative;
+  }
+  .edge-glow::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      130deg,
+      transparent 20%,
+      color-mix(in oklab, var(--primary) 60%, transparent),
+      color-mix(in oklab, var(--accent) 60%, transparent),
+      transparent 80%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .edge-glow:hover::after {
+    opacity: 1;
+  }
+
+  .dotgrid {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      var(--grid-line) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Scroll reveal — IntersectionObserver + CSS transition.
+   Deliberately NOT ScrollTrigger: this removes ~60 scroll-linked
+   animations from the frame loop, which is most of the scroll jank.
+----------------------------------------------------------------*/
+.rv {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--rv-d, 0ms);
+}
+.rv-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 220% center;
+  }
+}
+
+@keyframes marquee-l {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-r {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.65;
+  }
+  70% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sweep-x {
+  0% {
+    transform: translate3d(-120%, 0, 0);
+  }
+  100% {
+    transform: translate3d(220%, 0, 0);
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
