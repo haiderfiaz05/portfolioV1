@@ -6,16 +6,16 @@ scroll-drawn experience timeline and a pinned **horizontal** projects rail.
 
 ## Stack
 
-| Layer      | Choice                                                |
-| ---------- | ----------------------------------------------------- |
-| Framework  | Next.js 16 (App Router, TypeScript, Turbopack)        |
-| Styling    | Tailwind CSS v4 (OKLCH CSS-variable theme)            |
-| Components | shadcn/ui (button, card, badge, tooltip, separator)   |
-| Animation  | GSAP + ScrollTrigger, plus native CSS/IO where cheaper|
-| Scrolling  | Lenis smooth scroll, driven by the GSAP ticker        |
-| Icons      | react-icons (Simple Icons) + lucide-react             |
-| Theming    | next-themes (light / dark, class strategy)            |
-| Fonts      | Geist Sans + Geist Mono, self-hosted                  |
+| Layer      | Choice                                                 |
+| ---------- | ------------------------------------------------------ |
+| Framework  | Next.js 16 (App Router, TypeScript, Turbopack)         |
+| Styling    | Tailwind CSS v4 (OKLCH CSS-variable theme)             |
+| Components | shadcn/ui (button, card, badge, tooltip, separator)    |
+| Animation  | GSAP + ScrollTrigger, plus native CSS/IO where cheaper |
+| Scrolling  | Lenis smooth scroll, driven by the GSAP ticker         |
+| Icons      | react-icons (Simple Icons) + lucide-react              |
+| Theming    | next-themes (light / dark, class strategy)             |
+| Fonts      | Geist Sans + Geist Mono, self-hosted                   |
 
 ## Run it
 
@@ -42,13 +42,13 @@ This site was profiled and rebuilt around one rule: **nothing expensive runs on
 the scroll thread.** Measured in headless Chromium (mobile figures at 4× CPU
 throttle), before → after:
 
-| Metric              | Before  | After   |
-| ------------------- | ------- | ------- |
-| LCP (desktop)       | 1776 ms | ~570 ms |
-| Median frame (dsk)  | 300 ms  | 17–33 ms|
-| Median frame (mob)  | 167 ms  | 16.7 ms |
-| Janky frames (mob)  | 98 %    | ~32 %   |
-| Time to usable      | 5.6 s   | ~2.1 s  |
+| Metric             | Before  | After    |
+| ------------------ | ------- | -------- |
+| LCP (desktop)      | 1776 ms | ~570 ms  |
+| Median frame (dsk) | 300 ms  | 17–33 ms |
+| Median frame (mob) | 167 ms  | 16.7 ms  |
+| Janky frames (mob) | 98 %    | ~32 %    |
+| Time to usable     | 5.6 s   | ~2.1 s   |
 
 What actually moved the needle, in rough order:
 
