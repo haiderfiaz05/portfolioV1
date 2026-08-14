@@ -20,6 +20,8 @@ import {
   SiGit,
   SiMui,
   SiExpo,
+  SiSass,
+  SiAntdesign,
 } from "react-icons/si";
 
 /* ------------------------------------------------------------------ */
@@ -36,12 +38,12 @@ export const profile = {
   tagline:
     "Building fast, scalable web and mobile products for teams across Pakistan and the US.",
   email: "haiderfiaz05@gmail.com",
-  linkedin: "https://linkedin.com/in/haiderfiaz",
+  linkedin: "https://www.linkedin.com/in/haidar-fiaz",
   creative: "https://n24arts.com",
   resumeHref: "#contact",
   about: [
     "I'm a Full-Stack React Developer specializing in React, Next.js, TypeScript, and React Native. I build responsive, high-performance web and mobile applications backed by scalable GraphQL and REST APIs, PostgreSQL, and Firebase/Supabase.",
-    "Currently an Associate Software Developer at Wonder Craftz, I collaborate directly with US-based product teams in Agile environments, shipping real-time systems, analytics pipelines, and AI-powered features. I hold a BSCS from the University of Lahore (CGPA 3.55) and bring production experience in RAG, LangChain, and vector search — differentiators that go beyond typical frontend work.",
+    "Currently an Associate Software Developer at Wonder Craftz, I collaborate directly with US-based product teams in Agile environments, shipping real-time systems and AI-powered features. I hold a BSCS from the University of Lahore (CGPA 3.55) and bring production experience in RAG, LangChain, and vector search — differentiators that go beyond typical frontend work.",
   ],
 } as const;
 
@@ -82,6 +84,8 @@ export const skills: Skill[] = [
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4", group: "Styling & UI" },
   { name: "shadcn/ui", icon: SiShadcnui, color: "#0F172A", group: "Styling & UI", mono: true },
   { name: "Material UI", icon: SiMui, color: "#007FFF", group: "Styling & UI" },
+  { name: "SCSS", icon: SiSass, color: "#CC6699", group: "Styling & UI" },
+  { name: "Ant Design", icon: SiAntdesign, color: "#0170FE", group: "Styling & UI" },
   { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E", group: "Backend & APIs" },
   { name: "GraphQL", icon: SiGraphql, color: "#E10098", group: "Backend & APIs" },
   { name: "FastAPI", icon: SiFastapi, color: "#009688", group: "Backend & APIs" },
@@ -110,7 +114,7 @@ export const skillGroups: { title: SkillGroup; items: string[] }[] = [
   },
   {
     title: "Styling & UI",
-    items: ["Tailwind CSS", "ShadCN", "Material UI", "Responsive Design"],
+    items: ["Tailwind CSS", "ShadCN", "Material UI", "SCSS", "Ant Design", "Responsive Design"],
   },
   {
     title: "Backend & APIs",
@@ -392,7 +396,7 @@ export const currently = {
   role: "Associate Software Developer",
   company: "Wonder Craftz",
   since: "Oct 2025",
-  focus: "Real-time systems, analytics pipelines, AI-powered features",
+  focus: "Real-time systems, Backend development, Frontend development and AI-powered features",
   timeZone: "Asia/Karachi",
 };
 

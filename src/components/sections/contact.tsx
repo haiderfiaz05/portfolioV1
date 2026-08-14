@@ -112,16 +112,6 @@ export function Contact() {
             >
               <FaLinkedinIn className="size-3.5 text-primary" /> LinkedIn
             </a>
-
-            <a
-              href={profile.creative}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border/70 px-4 py-2 text-[13px] font-medium text-muted-foreground transition-all duration-300 hover:border-primary/40 hover:text-foreground"
-            >
-              <FaArrowUpRightFromSquare className="size-3 text-accent" />{" "}
-              n24arts.com
-            </a>
           </Reveal>
 
           <Reveal

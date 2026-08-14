@@ -42,7 +42,7 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
           <span className="rounded-full border border-border/70 bg-background/60 px-2.5 py-0.5 text-[11px] text-muted-foreground">
             {p.year}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+          <span className="rounded-full border border-border/70 bg-background/60 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.28em] text-foreground/80">
             {p.subtitle}
           </span>
         </div>

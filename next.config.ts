@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   productionBrowserSourceMaps: false,
+  allowedDevOrigins: ["192.168.100.12"],
 
   experimental: {
     // icon barrels are huge — rewrite them to direct per-icon imports

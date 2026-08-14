@@ -30,7 +30,7 @@ function Node({ item, i }: { item: TimelineItem; i: number }) {
     <li className="relative pl-14 sm:pl-20">
       <span
         className={cn(
-          "absolute left-[14px] top-2 flex size-9 -translate-x-1/2 items-center justify-center rounded-full border bg-background sm:left-[22px]",
+          "timeline-icon absolute left-[14px] top-2 flex size-9 items-center justify-center rounded-full border bg-background sm:left-[22px]",
           isCurrent ? "border-accent/60" : "border-border",
         )}
       >
@@ -45,7 +45,7 @@ function Node({ item, i }: { item: TimelineItem; i: number }) {
         ) : null}
       </span>
 
-      <div className="group surface hairline flex flex-col gap-3 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 sm:p-6">
+      <div className="timeline-card group surface hairline flex flex-col gap-3 rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 sm:p-6">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="font-mono text-[10.5px] uppercase tracking-[0.25em] text-muted-foreground">
             {String(i + 1).padStart(2, "0")} · {item.period}
