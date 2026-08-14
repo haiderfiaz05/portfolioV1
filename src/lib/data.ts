@@ -159,17 +159,7 @@ export const timeline: TimelineItem[] = [
     ],
     tags: ["Next.js", "React Native", "GraphQL", "PostgreSQL", "BigQuery"],
   },
-  {
-    id: "build-asia",
-    title: "Represented Tameer.ai at Build Asia 2026",
-    org: "Build Asia Expo",
-    period: "2026",
-    kind: "milestone",
-    points: [
-      "Presented the Tameer.ai platform — Pakistan's first zero-commission real estate and construction marketplace — to industry stakeholders.",
-    ],
-    tags: ["Product", "Public speaking"],
-  },
+
   {
     id: "dev-corporate",
     title: "Summer Intern",
@@ -225,7 +215,6 @@ export const projects: Project[] = [
       "Delivered pixel-perfect, high-performance features from Figma using Next.js and TypeScript.",
       "Built backend services with Cloud Functions and GraphQL, wiring PostgreSQL and BigQuery into Google Analytics for user-behaviour tracking.",
       "Shipped RAG-based semantic search with LangChain and Chroma DB — in production.",
-      "Represented Tameer.ai at Build Asia 2026.",
     ],
     stack: ["Next.js", "TypeScript", "GraphQL", "PostgreSQL", "BigQuery", "LangChain"],
     href: "https://www.tameer.ai",
@@ -259,8 +248,8 @@ export const projects: Project[] = [
     summary:
       "A cross-platform health app focused on accessible, real-time user experiences.",
     points: [
+      "Delivered pixel-perfect, high-performance frontend screens from Figma using React Native.",
       "Integrated RESTful backend APIs with secure token-based authentication.",
-      "Built a custom real-time chat system and push notification features.",
       "Applied thread-level performance optimisations to reduce screen drop rate.",
     ],
     stack: ["React Native", "REST APIs", "Realtime"],
