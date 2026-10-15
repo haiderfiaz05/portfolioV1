@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { ArrowDown, MapPin } from "lucide-react";
 import {
   FaLinkedinIn,
@@ -50,9 +51,14 @@ export function Hero() {
           "-=0.4",
         )
         .from(
+          ".hero-photo",
+          { opacity: 0, y: 28, scale: 0.96, duration: 0.8 },
+          "-=0.75",
+        )
+        .from(
           ".hero-card",
           { opacity: 0, y: 28, duration: 0.7 },
-          "-=0.75",
+          "-=0.5",
         )
         .from(
           ".hero-code-line",
@@ -181,9 +187,24 @@ export function Hero() {
           </dl>
         </div>
 
-        {/* code card */}
-        <div className="hero-card relative">
-          <div className="surface-strong hairline relative overflow-hidden rounded-2xl shadow-[0_30px_70px_-45px_var(--primary)]">
+        <div className="relative mx-auto w-full max-w-[440px] pb-3 lg:max-w-none">
+          <div className="hero-photo relative mx-auto aspect-square w-[88%] overflow-hidden rounded-[2rem] border border-border/70 bg-secondary shadow-[0_30px_75px_-40px_var(--primary)] sm:w-[90%]">
+            <Image
+              src="/haidar-fiaz.png"
+              alt="Portrait of Haidar Fiaz"
+              fill
+              priority
+              sizes="(max-width: 640px) 80vw, (max-width: 1024px) 400px, 35vw"
+              className="object-cover object-center"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+            <span className="absolute left-5 top-5 rounded-full border border-white/25 bg-black/35 px-3 py-1.5 font-mono text-[11px] text-white backdrop-blur-sm sm:left-6 sm:top-6">
+              Haidar Fiaz · Lahore, PK
+            </span>
+          </div>
+
+          {/* A compact version of the original code card keeps the hero's visual language. */}
+          <div className="hero-card surface-strong hairline relative z-10 -mt-10 ml-auto w-[92%] overflow-hidden rounded-2xl shadow-[0_24px_60px_-35px_var(--primary)] sm:-mt-12 sm:w-[88%]">
             <div className="flex items-center gap-2 border-b border-border/70 bg-secondary/40 px-4 py-3">
               <span className="size-2.5 rounded-full bg-[#ff5f57]" />
               <span className="size-2.5 rounded-full bg-[#febc2e]" />
@@ -192,7 +213,7 @@ export function Hero() {
                 haidar.config.ts
               </span>
             </div>
-            <pre className="hide-scrollbar overflow-x-auto p-5 font-mono text-[12.5px] leading-6 sm:text-[13px]">
+            <pre className="hide-scrollbar overflow-x-auto px-4 py-3 font-mono text-[11px] leading-5 sm:px-5 sm:text-[12px]">
               <code>
                 <div className="hero-code-line">
                   <span className="text-primary">const</span> haidar{" "}
@@ -216,21 +237,6 @@ export function Hero() {
                     &quot;graphql&quot;
                   </span>
                   <span className="text-muted-foreground">],</span>
-                </div>
-                <div className="hero-code-line">
-                  {"  "}
-                  <span className="text-accent">ai</span>
-                  <span className="text-muted-foreground">: [</span>
-                  <span className="text-primary">
-                    &quot;rag&quot;, &quot;langchain&quot;, &quot;chroma&quot;
-                  </span>
-                  <span className="text-muted-foreground">],</span>
-                </div>
-                <div className="hero-code-line">
-                  {"  "}
-                  <span className="text-accent">shipping</span>
-                  <span className="text-muted-foreground">: </span>
-                  <span className="text-primary">true</span>,
                 </div>
                 <div className="hero-code-line text-muted-foreground">
                   {"}"} <span className="animate-pulse text-accent">▍</span>
